@@ -195,6 +195,23 @@ def main():
     print("Device:", device)
 
     train_feats, label2id, id2label, meta = load_pt(os.path.join(args.cache_dir, "train.pt"))
+
+    # ===== 🧪 DEBUG: 检查 CLS / SEP / PAD 的 label =====
+    tok = AutoTokenizer.from_pretrained(args.model_name)
+
+    sample_ids = train_feats["input_ids"][0]
+    sample_labels = train_feats["labels"][0]
+    sample_mask = train_feats["attention_mask"][0]
+
+    tokens = tok.convert_ids_to_tokens(sample_ids.tolist())
+
+    print("\n===== DEBUG SAMPLE =====")
+    for i, (t, lid, m) in enumerate(zip(tokens, sample_labels.tolist(), sample_mask.tolist())):
+      if t in [tok.cls_token, tok.sep_token] or m == 0:
+        print(f"pos={i:3d} token={t:10s} mask={m} label={lid}")
+    print("========================\n")
+    # ===== 🧪 DEBUG END =====
+
     dev_feats, _, _, _ = load_pt(os.path.join(args.cache_dir, "dev.pt"))
 
     # 🟡 新增：打印 scheme，方便你确认读的是 BIO 还是 BIOS

@@ -1,0 +1,319 @@
+{"step": 200, "epoch": 1, "train_loss": 0.2852344214916229, "loss": 0.24219377622717903, "token_acc": 0.9320896300156332, "ent_micro_p": 0.6450264697687377, "ent_micro_r": 0.7538261152718981, "ent_micro_f1": 0.6951951951946981, "ent_macro_f1": 0.6958791693755216, "per_type": {"address": {"p": 0.44274809160305256, "r": 0.6219839142091136, "f1": 0.5172798216271607, "tp": 232, "fp": 292, "fn": 141}, "book": {"p": 0.7195121951219469, "r": 0.7662337662337613, "f1": 0.7421383647793701, "tp": 118, "fp": 46, "fn": 36}, "company": {"p": 0.6475972540045751, "r": 0.7486772486772466, "f1": 0.6944785276068628, "tp": 283, "fp": 154, "fn": 95}, "game": {"p": 0.6903225806451591, "r": 0.7254237288135568, "f1": 0.7074380165284234, "tp": 214, "fp": 96, "fn": 81}, "government": {"p": 0.6624999999999979, "r": 0.858299595141697, "f1": 0.7477954144615868, "tp": 212, "fp": 108, "fn": 35}, "movie": {"p": 0.7394366197183047, "r": 0.6953642384105915, "f1": 0.7167235494875502, "tp": 105, "fp": 37, "fn": 46}, "name": {"p": 0.8197064989517802, "r": 0.8426724137931015, "f1": 0.8310308182779254, "tp": 391, "fp": 86, "fn": 73}, "organization": {"p": 0.6025917926565861, "r": 0.7602179836512241, "f1": 0.6722891566260111, "tp": 279, "fp": 184, "fn": 88}, "position": {"p": 0.6579925650557609, "r": 0.8175519630484969, "f1": 0.7291452111220583, "tp": 354, "fp": 184, "fn": 79}, "scene": {"p": 0.5934579439252309, "r": 0.6076555023923416, "f1": 0.6004728132382678, "tp": 127, "fp": 87, "fn": 82}}}
+{"step": 400, "epoch": 2, "train_loss": 0.11499528586864471, "loss": 0.21399787529593423, "token_acc": 0.9373632100052111, "ent_micro_p": 0.6913470115967884, "ent_micro_r": 0.7570823835884075, "ent_micro_f1": 0.722723033882, "ent_macro_f1": 0.7096280928591424, "per_type": {"address": {"p": 0.5406091370558361, "r": 0.5710455764075051, "f1": 0.5554106910034101, "tp": 213, "fp": 181, "fn": 160}, "book": {"p": 0.5727272727272701, "r": 0.8181818181818129, "f1": 0.6737967914433621, "tp": 126, "fp": 94, "fn": 28}, "company": {"p": 0.745635910224437, "r": 0.7910052910052888, "f1": 0.7676508344025793, "tp": 299, "fp": 102, "fn": 79}, "game": {"p": 0.5721518987341757, "r": 0.7661016949152516, "f1": 0.6550724637676244, "tp": 226, "fp": 169, "fn": 69}, "government": {"p": 0.7157534246575318, "r": 0.8461538461538427, "f1": 0.7755102040811332, "tp": 209, "fp": 83, "fn": 38}, "movie": {"p": 0.6369863013698587, "r": 0.6158940397350953, "f1": 0.6262626262621223, "tp": 93, "fp": 53, "fn": 58}, "name": {"p": 0.8593073593073574, "r": 0.8556034482758602, "f1": 0.857451403887187, "tp": 397, "fp": 65, "fn": 67}, "organization": {"p": 0.7411444141689353, "r": 0.7411444141689353, "f1": 0.7411444141684351, "tp": 272, "fp": 95, "fn": 95}, "position": {"p": 0.7361702127659558, "r": 0.7990762124711297, "f1": 0.7663344407525444, "tp": 346, "fp": 124, "fn": 87}, "scene": {"p": 0.6666666666666636, "r": 0.6889952153110015, "f1": 0.6776470588230263, "tp": 144, "fp": 72, "fn": 65}}}
+{"step": 600, "epoch": 2, "train_loss": 0.1364160031080246, "loss": 0.19495004202638352, "token_acc": 0.9416362688900469, "ent_micro_p": 0.6984173505275496, "ent_micro_r": 0.7759687398241613, "ent_micro_f1": 0.7351534783274356, "ent_macro_f1": 0.7298420427600286, "per_type": {"address": {"p": 0.4894837476099417, "r": 0.6863270777479874, "f1": 0.5714285714280841, "tp": 256, "fp": 267, "fn": 117}, "book": {"p": 0.7098765432098721, "r": 0.746753246753242, "f1": 0.7278481012653186, "tp": 115, "fp": 47, "fn": 39}, "company": {"p": 0.6832579185520347, "r": 0.7989417989417967, "f1": 0.7365853658531596, "tp": 302, "fp": 140, "fn": 76}, "game": {"p": 0.691256830601091, "r": 0.8576271186440648, "f1": 0.7655068078663718, "tp": 253, "fp": 113, "fn": 42}, "government": {"p": 0.7208480565370998, "r": 0.8259109311740858, "f1": 0.7698113207542162, "tp": 204, "fp": 79, "fn": 43}, "movie": {"p": 0.7483870967741888, "r": 0.7682119205297963, "f1": 0.7581699346400179, "tp": 116, "fp": 39, "fn": 35}, "name": {"p": 0.832661290322579, "r": 0.8900862068965497, "f1": 0.8604166666661653, "tp": 413, "fp": 83, "fn": 51}, "organization": {"p": 0.7065217391304328, "r": 0.7084468664850117, "f1": 0.707482993196777, "tp": 260, "fp": 108, "fn": 107}, "position": {"p": 0.7635574837310178, "r": 0.8129330254041551, "f1": 0.7874720357936822, "tp": 352, "fp": 109, "fn": 81}, "scene": {"p": 0.7179487179487134, "r": 0.5358851674641123, "f1": 0.6136986301364935, "tp": 112, "fp": 44, "fn": 97}}}
+{"step": 800, "epoch": 3, "train_loss": 0.09260166436433792, "loss": 0.20225711397471882, "token_acc": 0.9419906201146431, "ent_micro_p": 0.7104795737122556, "ent_micro_r": 0.7815043959622271, "ent_micro_f1": 0.744301442083545, "ent_macro_f1": 0.7416987476755837, "per_type": {"address": {"p": 0.5315904139433539, "r": 0.6541554959785505, "f1": 0.5865384615379654, "tp": 244, "fp": 215, "fn": 129}, "book": {"p": 0.7125748502993969, "r": 0.7727272727272677, "f1": 0.7414330218063497, "tp": 119, "fp": 48, "fn": 35}, "company": {"p": 0.6866359447004592, "r": 0.7883597883597863, "f1": 0.7339901477827517, "tp": 298, "fp": 136, "fn": 80}, "game": {"p": 0.753086419753084, "r": 0.8271186440677938, "f1": 0.7883683360253466, "tp": 244, "fp": 80, "fn": 51}, "government": {"p": 0.7481481481481453, "r": 0.817813765182183, "f1": 0.7814313346223218, "tp": 202, "fp": 68, "fn": 45}, "movie": {"p": 0.7847222222222168, "r": 0.7483443708609222, "f1": 0.7661016949147493, "tp": 113, "fp": 31, "fn": 38}, "name": {"p": 0.8521560574948648, "r": 0.894396551724136, "f1": 0.8727655099889831, "tp": 415, "fp": 72, "fn": 49}, "organization": {"p": 0.6798029556650229, "r": 0.7520435967302431, "f1": 0.7141009055622419, "tp": 276, "fp": 130, "fn": 91}, "position": {"p": 0.7162977867203204, "r": 0.8221709006928387, "f1": 0.765591397848963, "tp": 356, "fp": 141, "fn": 77}, "scene": {"p": 0.6999999999999963, "r": 0.6363636363636334, "f1": 0.6666666666661644, "tp": 133, "fp": 57, "fn": 76}}}
+{"step": 1000, "epoch": 3, "train_loss": 0.1345404088497162, "loss": 0.19696354333843505, "token_acc": 0.9456591974986972, "ent_micro_p": 0.7395448954489543, "ent_micro_r": 0.7831325301204817, "ent_micro_f1": 0.7607148505451273, "ent_macro_f1": 0.7582017286891499, "per_type": {"address": {"p": 0.5389473684210515, "r": 0.6863270777479874, "f1": 0.6037735849051662, "tp": 256, "fp": 219, "fn": 117}, "book": {"p": 0.767741935483866, "r": 0.7727272727272677, "f1": 0.7702265372163235, "tp": 119, "fp": 36, "fn": 35}, "company": {"p": 0.7581047381546115, "r": 0.8042328042328021, "f1": 0.7804878048775472, "tp": 304, "fp": 97, "fn": 74}, "game": {"p": 0.7593749999999976, "r": 0.8237288135593192, "f1": 0.7902439024385225, "tp": 243, "fp": 77, "fn": 52}, "government": {"p": 0.7222222222222194, "r": 0.7894736842105231, "f1": 0.7543520309472734, "tp": 195, "fp": 75, "fn": 52}, "movie": {"p": 0.7547169811320708, "r": 0.7947019867549616, "f1": 0.7741935483865919, "tp": 120, "fp": 39, "fn": 31}, "name": {"p": 0.8601252609603321, "r": 0.8879310344827567, "f1": 0.8738069989390529, "tp": 412, "fp": 67, "fn": 52}, "organization": {"p": 0.7875354107648702, "r": 0.757493188010897, "f1": 0.7722222222217201, "tp": 278, "fp": 75, "fn": 89}, "position": {"p": 0.7701149425287338, "r": 0.7736720554272499, "f1": 0.7718894009211572, "tp": 335, "fp": 100, "fn": 98}, "scene": {"p": 0.6975609756097527, "r": 0.6842105263157863, "f1": 0.690821256038144, "tp": 143, "fp": 62, "fn": 66}}}
+{"step": 1200, "epoch": 4, "train_loss": 0.04674476757645607, "loss": 0.22420882575568699, "token_acc": 0.9426159458051069, "ent_micro_p": 0.7408793264733393, "ent_micro_r": 0.7736893520026048, "ent_micro_f1": 0.7569289582664641, "ent_macro_f1": 0.7524831675901714, "per_type": {"address": {"p": 0.6327683615819191, "r": 0.600536193029489, "f1": 0.6162310866569951, "tp": 224, "fp": 130, "fn": 149}, "book": {"p": 0.737804878048776, "r": 0.7857142857142806, "f1": 0.7610062893076717, "tp": 121, "fp": 43, "fn": 33}, "company": {"p": 0.7479892761394081, "r": 0.7380952380952361, "f1": 0.7430093209049574, "tp": 279, "fp": 94, "fn": 99}, "game": {"p": 0.7439024390243879, "r": 0.8271186440677938, "f1": 0.7833065810588888, "tp": 244, "fp": 84, "fn": 51}, "government": {"p": 0.719424460431652, "r": 0.8097165991902802, "f1": 0.7619047619042607, "tp": 200, "fp": 78, "fn": 47}, "movie": {"p": 0.74683544303797, "r": 0.781456953642379, "f1": 0.7637540453069386, "tp": 118, "fp": 40, "fn": 33}, "name": {"p": 0.8363636363636346, "r": 0.8922413793103429, "f1": 0.863399374347778, "tp": 414, "fp": 81, "fn": 50}, "organization": {"p": 0.7454068241469797, "r": 0.7738419618528589, "f1": 0.7593582887695515, "tp": 284, "fp": 97, "fn": 83}, "position": {"p": 0.7527839643652544, "r": 0.7806004618937626, "f1": 0.7664399092965506, "tp": 338, "fp": 111, "fn": 95}, "scene": {"p": 0.6784140969162966, "r": 0.7368421052631544, "f1": 0.7064220183481215, "tp": 154, "fp": 73, "fn": 55}}}
+{"step": 1400, "epoch": 5, "train_loss": 0.03889266401529312, "loss": 0.2351513689472562, "token_acc": 0.9426784783741532, "ent_micro_p": 0.7284139620330677, "ent_micro_r": 0.7746662324975576, "ent_micro_f1": 0.7508284677287096, "ent_macro_f1": 0.7461186770766215, "per_type": {"address": {"p": 0.5590361445783119, "r": 0.6219839142091136, "f1": 0.5888324873091445, "tp": 232, "fp": 183, "fn": 141}, "book": {"p": 0.7407407407407361, "r": 0.7792207792207742, "f1": 0.7594936708855714, "tp": 120, "fp": 42, "fn": 34}, "company": {"p": 0.7349999999999981, "r": 0.7777777777777757, "f1": 0.7557840616961565, "tp": 294, "fp": 106, "fn": 84}, "game": {"p": 0.7623456790123433, "r": 0.8372881355932175, "f1": 0.7980613893371398, "tp": 247, "fp": 77, "fn": 48}, "government": {"p": 0.7111111111111084, "r": 0.777327935222669, "f1": 0.7427466150865386, "tp": 192, "fp": 78, "fn": 55}, "movie": {"p": 0.7048192771084295, "r": 0.7748344370860876, "f1": 0.7381703470026509, "tp": 117, "fp": 49, "fn": 34}, "name": {"p": 0.842650103519667, "r": 0.8771551724137912, "f1": 0.8595564941916841, "tp": 407, "fp": 76, "fn": 57}, "organization": {"p": 0.7340153452685403, "r": 0.7820163487738397, "f1": 0.7572559366749602, "tp": 287, "fp": 104, "fn": 80}, "position": {"p": 0.7612612612612595, "r": 0.7806004618937626, "f1": 0.7708095781066818, "tp": 338, "fp": 106, "fn": 95}, "scene": {"p": 0.6872037914691911, "r": 0.6937799043062168, "f1": 0.6904761904756871, "tp": 145, "fp": 66, "fn": 64}}}
+{"step": 1600, "epoch": 5, "train_loss": 0.0178461242467165, "loss": 0.24681192352658227, "token_acc": 0.9433454924439812, "ent_micro_p": 0.7394827048924897, "ent_micro_r": 0.772712471507652, "ent_micro_f1": 0.7557324840759331, "ent_macro_f1": 0.7526045188783219, "per_type": {"address": {"p": 0.5585365853658523, "r": 0.6139410187667543, "f1": 0.58492975734305, "tp": 229, "fp": 181, "fn": 144}, "book": {"p": 0.7256097560975566, "r": 0.7727272727272677, "f1": 0.7484276729554706, "tp": 119, "fp": 45, "fn": 35}, "company": {"p": 0.7424242424242405, "r": 0.7777777777777757, "f1": 0.7596899224801184, "tp": 294, "fp": 102, "fn": 84}, "game": {"p": 0.7591463414634123, "r": 0.8440677966101665, "f1": 0.79935794542486, "tp": 249, "fp": 79, "fn": 46}, "government": {"p": 0.7434944237918187, "r": 0.8097165991902802, "f1": 0.7751937984491103, "tp": 200, "fp": 69, "fn": 47}, "movie": {"p": 0.7748344370860876, "r": 0.7748344370860876, "f1": 0.7748344370855875, "tp": 117, "fp": 34, "fn": 34}, "name": {"p": 0.8458333333333315, "r": 0.8749999999999981, "f1": 0.860169491524922, "tp": 406, "fp": 74, "fn": 58}, "organization": {"p": 0.7719780219780198, "r": 0.765667574931878, "f1": 0.7688098495207015, "tp": 281, "fp": 83, "fn": 86}, "position": {"p": 0.7690531177829081, "r": 0.7690531177829081, "f1": 0.769053117782408, "tp": 333, "fp": 100, "fn": 100}, "scene": {"p": 0.6775700934579407, "r": 0.6937799043062168, "f1": 0.6855791962169909, "tp": 145, "fp": 69, "fn": 64}}}python script/train_ner_torch3.py --model_name ./bert-wwm-ext --cache_dir cache_bios --out_dir outputs/bert_run_bios --epochs 5 --batch_size 32 --lr 3e-5 --warmup_ratio 0.1 --eval_steps 200 --save_best --seed 42
+Device: cuda
+
+===== DEBUG SAMPLE =====
+pos=  0 token=[CLS]      mask=1 label=-100
+pos= 51 token=[SEP]      mask=1 label=-100
+pos= 52 token=[PAD]      mask=0 label=-100
+pos= 53 token=[PAD]      mask=0 label=-100
+pos= 54 token=[PAD]      mask=0 label=-100
+pos= 55 token=[PAD]      mask=0 label=-100
+pos= 56 token=[PAD]      mask=0 label=-100
+pos= 57 token=[PAD]      mask=0 label=-100
+pos= 58 token=[PAD]      mask=0 label=-100
+pos= 59 token=[PAD]      mask=0 label=-100
+pos= 60 token=[PAD]      mask=0 label=-100
+pos= 61 token=[PAD]      mask=0 label=-100
+pos= 62 token=[PAD]      mask=0 label=-100
+pos= 63 token=[PAD]      mask=0 label=-100
+pos= 64 token=[PAD]      mask=0 label=-100
+pos= 65 token=[PAD]      mask=0 label=-100
+pos= 66 token=[PAD]      mask=0 label=-100
+pos= 67 token=[PAD]      mask=0 label=-100
+pos= 68 token=[PAD]      mask=0 label=-100
+pos= 69 token=[PAD]      mask=0 label=-100
+pos= 70 token=[PAD]      mask=0 label=-100
+pos= 71 token=[PAD]      mask=0 label=-100
+pos= 72 token=[PAD]      mask=0 label=-100
+pos= 73 token=[PAD]      mask=0 label=-100
+pos= 74 token=[PAD]      mask=0 label=-100
+pos= 75 token=[PAD]      mask=0 label=-100
+pos= 76 token=[PAD]      mask=0 label=-100
+pos= 77 token=[PAD]      mask=0 label=-100
+pos= 78 token=[PAD]      mask=0 label=-100
+pos= 79 token=[PAD]      mask=0 label=-100
+pos= 80 token=[PAD]      mask=0 label=-100
+pos= 81 token=[PAD]      mask=0 label=-100
+pos= 82 token=[PAD]      mask=0 label=-100
+pos= 83 token=[PAD]      mask=0 label=-100
+pos= 84 token=[PAD]      mask=0 label=-100
+pos= 85 token=[PAD]      mask=0 label=-100
+pos= 86 token=[PAD]      mask=0 label=-100
+pos= 87 token=[PAD]      mask=0 label=-100
+pos= 88 token=[PAD]      mask=0 label=-100
+pos= 89 token=[PAD]      mask=0 label=-100
+pos= 90 token=[PAD]      mask=0 label=-100
+pos= 91 token=[PAD]      mask=0 label=-100
+pos= 92 token=[PAD]      mask=0 label=-100
+pos= 93 token=[PAD]      mask=0 label=-100
+pos= 94 token=[PAD]      mask=0 label=-100
+pos= 95 token=[PAD]      mask=0 label=-100
+pos= 96 token=[PAD]      mask=0 label=-100
+pos= 97 token=[PAD]      mask=0 label=-100
+pos= 98 token=[PAD]      mask=0 label=-100
+pos= 99 token=[PAD]      mask=0 label=-100
+pos=100 token=[PAD]      mask=0 label=-100
+pos=101 token=[PAD]      mask=0 label=-100
+pos=102 token=[PAD]      mask=0 label=-100
+pos=103 token=[PAD]      mask=0 label=-100
+pos=104 token=[PAD]      mask=0 label=-100
+pos=105 token=[PAD]      mask=0 label=-100
+pos=106 token=[PAD]      mask=0 label=-100
+pos=107 token=[PAD]      mask=0 label=-100
+pos=108 token=[PAD]      mask=0 label=-100
+pos=109 token=[PAD]      mask=0 label=-100
+pos=110 token=[PAD]      mask=0 label=-100
+pos=111 token=[PAD]      mask=0 label=-100
+pos=112 token=[PAD]      mask=0 label=-100
+pos=113 token=[PAD]      mask=0 label=-100
+pos=114 token=[PAD]      mask=0 label=-100
+pos=115 token=[PAD]      mask=0 label=-100
+pos=116 token=[PAD]      mask=0 label=-100
+pos=117 token=[PAD]      mask=0 label=-100
+pos=118 token=[PAD]      mask=0 label=-100
+pos=119 token=[PAD]      mask=0 label=-100
+pos=120 token=[PAD]      mask=0 label=-100
+pos=121 token=[PAD]      mask=0 label=-100
+pos=122 token=[PAD]      mask=0 label=-100
+pos=123 token=[PAD]      mask=0 label=-100
+pos=124 token=[PAD]      mask=0 label=-100
+pos=125 token=[PAD]      mask=0 label=-100
+pos=126 token=[PAD]      mask=0 label=-100
+pos=127 token=[PAD]      mask=0 label=-100
+========================
+
+[INFO] cache_dir=cache_bios scheme=bios num_labels=31
+Loading weights: 100%|█| 197/197 [00:00<00:00, 8746.64it/s, Materializing param=bert.encoder.layer.11.output.d
+BertForTokenClassification LOAD REPORT from: ./bert-wwm-ext
+Key                                        | Status     | 
+-------------------------------------------+------------+-
+cls.predictions.bias                       | UNEXPECTED | 
+bert.pooler.dense.bias                     | UNEXPECTED | 
+cls.seq_relationship.bias                  | UNEXPECTED | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED | 
+bert.pooler.dense.weight                   | UNEXPECTED | 
+cls.predictions.transform.dense.bias       | UNEXPECTED | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED | 
+cls.predictions.decoder.weight             | UNEXPECTED | 
+cls.predictions.transform.dense.weight     | UNEXPECTED | 
+cls.seq_relationship.weight                | UNEXPECTED | 
+classifier.bias                            | MISSING    | 
+classifier.weight                          | MISSING    | 
+
+Notes:
+- UNEXPECTED    :can be ignored when loading from different task/architecture; not ok if you expect identical 
+arch.                                                                                                         - MISSING       :those params were newly initialized because missing from the checkpoint. Consider training on
+ your downstream task.                                                                                        Logging to: outputs/bert_run_bios/train_log.jsonl
+epoch 1 step 20/1680 loss 2.7956 time 0.07s
+epoch 1 step 40/1680 loss 1.2424 time 0.07s
+epoch 1 step 60/1680 loss 1.0781 time 0.07s
+epoch 1 step 80/1680 loss 0.7575 time 0.06s
+epoch 1 step 100/1680 loss 0.4095 time 0.07s
+epoch 1 step 120/1680 loss 0.4786 time 0.07s
+epoch 1 step 140/1680 loss 0.3463 time 0.07s
+epoch 1 step 160/1680 loss 0.1949 time 0.07s
+epoch 1 step 180/1680 loss 0.3437 time 0.07s
+epoch 1 step 200/1680 loss 0.2852 time 0.07s
+[EVAL] step 200 dev_loss 0.2422 token_acc 0.9321 micro_f1 0.6952 macro_f1 0.6959
+---- per-type (worst -> best) ----
+address      P=0.443 R=0.622 F1=0.517 (tp=232 fp=292 fn=141)
+scene        P=0.593 R=0.608 F1=0.600 (tp=127 fp=87 fn=82)
+organization P=0.603 R=0.760 F1=0.672 (tp=279 fp=184 fn=88)
+company      P=0.648 R=0.749 F1=0.694 (tp=283 fp=154 fn=95)
+game         P=0.690 R=0.725 F1=0.707 (tp=214 fp=96 fn=81)
+movie        P=0.739 R=0.695 F1=0.717 (tp=105 fp=37 fn=46)
+position     P=0.658 R=0.818 F1=0.729 (tp=354 fp=184 fn=79)
+book         P=0.720 R=0.766 F1=0.742 (tp=118 fp=46 fn=36)
+government   P=0.662 R=0.858 F1=0.748 (tp=212 fp=108 fn=35)
+name         P=0.820 R=0.843 F1=0.831 (tp=391 fp=86 fn=73)
+----------------------------------
+Writing model shards: 100%|█████████████████████████████████████████████████████| 1/1 [00:00<00:00,  1.73it/s]
+[SAVE] new best macro_f1=0.6959 saved to outputs/bert_run_bios/best
+epoch 1 step 220/1680 loss 0.1611 time 0.07s
+epoch 1 step 240/1680 loss 0.2026 time 0.07s
+epoch 1 step 260/1680 loss 0.3457 time 0.07s
+epoch 1 step 280/1680 loss 0.2454 time 0.06s
+epoch 1 step 300/1680 loss 0.2461 time 0.07s
+epoch 1 step 320/1680 loss 0.2471 time 0.08s
+[EPOCH END] epoch 1 dev_loss 0.2115 token_acc 0.9402 micro_f1 0.7269 macro_f1 0.7243
+epoch 2 step 340/1680 loss 0.1554 time 0.07s
+epoch 2 step 360/1680 loss 0.0939 time 0.07s
+epoch 2 step 380/1680 loss 0.1377 time 0.07s
+epoch 2 step 400/1680 loss 0.1150 time 0.07s
+[EVAL] step 400 dev_loss 0.2140 token_acc 0.9374 micro_f1 0.7227 macro_f1 0.7096
+---- per-type (worst -> best) ----
+address      P=0.541 R=0.571 F1=0.555 (tp=213 fp=181 fn=160)
+movie        P=0.637 R=0.616 F1=0.626 (tp=93 fp=53 fn=58)
+game         P=0.572 R=0.766 F1=0.655 (tp=226 fp=169 fn=69)
+book         P=0.573 R=0.818 F1=0.674 (tp=126 fp=94 fn=28)
+scene        P=0.667 R=0.689 F1=0.678 (tp=144 fp=72 fn=65)
+organization P=0.741 R=0.741 F1=0.741 (tp=272 fp=95 fn=95)
+position     P=0.736 R=0.799 F1=0.766 (tp=346 fp=124 fn=87)
+company      P=0.746 R=0.791 F1=0.768 (tp=299 fp=102 fn=79)
+government   P=0.716 R=0.846 F1=0.776 (tp=209 fp=83 fn=38)
+name         P=0.859 R=0.856 F1=0.857 (tp=397 fp=65 fn=67)
+----------------------------------
+Writing model shards: 100%|█████████████████████████████████████████████████████| 1/1 [00:00<00:00,  1.08it/s]
+[SAVE] new best macro_f1=0.7096 saved to outputs/bert_run_bios/best
+epoch 2 step 420/1680 loss 0.1389 time 0.07s
+epoch 2 step 440/1680 loss 0.2215 time 0.07s
+epoch 2 step 460/1680 loss 0.1395 time 0.08s
+epoch 2 step 480/1680 loss 0.1415 time 0.06s
+epoch 2 step 500/1680 loss 0.2177 time 0.06s
+epoch 2 step 520/1680 loss 0.1645 time 0.09s
+epoch 2 step 540/1680 loss 0.1332 time 0.07s
+epoch 2 step 560/1680 loss 0.1165 time 0.06s
+epoch 2 step 580/1680 loss 0.1383 time 0.07s
+epoch 2 step 600/1680 loss 0.1364 time 0.08s
+[EVAL] step 600 dev_loss 0.1950 token_acc 0.9416 micro_f1 0.7352 macro_f1 0.7298
+---- per-type (worst -> best) ----
+address      P=0.489 R=0.686 F1=0.571 (tp=256 fp=267 fn=117)
+scene        P=0.718 R=0.536 F1=0.614 (tp=112 fp=44 fn=97)
+organization P=0.707 R=0.708 F1=0.707 (tp=260 fp=108 fn=107)
+book         P=0.710 R=0.747 F1=0.728 (tp=115 fp=47 fn=39)
+company      P=0.683 R=0.799 F1=0.737 (tp=302 fp=140 fn=76)
+movie        P=0.748 R=0.768 F1=0.758 (tp=116 fp=39 fn=35)
+game         P=0.691 R=0.858 F1=0.766 (tp=253 fp=113 fn=42)
+government   P=0.721 R=0.826 F1=0.770 (tp=204 fp=79 fn=43)
+position     P=0.764 R=0.813 F1=0.787 (tp=352 fp=109 fn=81)
+name         P=0.833 R=0.890 F1=0.860 (tp=413 fp=83 fn=51)
+----------------------------------
+Writing model shards: 100%|█████████████████████████████████████████████████████| 1/1 [00:01<00:00,  1.10s/it]
+[SAVE] new best macro_f1=0.7298 saved to outputs/bert_run_bios/best
+epoch 2 step 620/1680 loss 0.1409 time 0.06s
+epoch 2 step 640/1680 loss 0.0966 time 0.07s
+epoch 2 step 660/1680 loss 0.1861 time 0.07s
+[EPOCH END] epoch 2 dev_loss 0.1833 token_acc 0.9450 micro_f1 0.7451 macro_f1 0.7376
+epoch 3 step 680/1680 loss 0.1269 time 0.08s
+epoch 3 step 700/1680 loss 0.0510 time 0.08s
+epoch 3 step 720/1680 loss 0.0876 time 0.06s
+epoch 3 step 740/1680 loss 0.0994 time 0.07s
+epoch 3 step 760/1680 loss 0.0873 time 0.07s
+epoch 3 step 780/1680 loss 0.1158 time 0.07s
+epoch 3 step 800/1680 loss 0.0926 time 0.06s
+[EVAL] step 800 dev_loss 0.2023 token_acc 0.9420 micro_f1 0.7443 macro_f1 0.7417
+---- per-type (worst -> best) ----
+address      P=0.532 R=0.654 F1=0.587 (tp=244 fp=215 fn=129)
+scene        P=0.700 R=0.636 F1=0.667 (tp=133 fp=57 fn=76)
+organization P=0.680 R=0.752 F1=0.714 (tp=276 fp=130 fn=91)
+company      P=0.687 R=0.788 F1=0.734 (tp=298 fp=136 fn=80)
+book         P=0.713 R=0.773 F1=0.741 (tp=119 fp=48 fn=35)
+position     P=0.716 R=0.822 F1=0.766 (tp=356 fp=141 fn=77)
+movie        P=0.785 R=0.748 F1=0.766 (tp=113 fp=31 fn=38)
+government   P=0.748 R=0.818 F1=0.781 (tp=202 fp=68 fn=45)
+game         P=0.753 R=0.827 F1=0.788 (tp=244 fp=80 fn=51)
+name         P=0.852 R=0.894 F1=0.873 (tp=415 fp=72 fn=49)
+----------------------------------
+Writing model shards: 100%|█████████████████████████████████████████████████████| 1/1 [00:00<00:00,  1.13it/s]
+[SAVE] new best macro_f1=0.7417 saved to outputs/bert_run_bios/best
+epoch 3 step 820/1680 loss 0.0513 time 0.07s
+epoch 3 step 840/1680 loss 0.1511 time 0.06s
+epoch 3 step 860/1680 loss 0.1104 time 0.06s
+epoch 3 step 880/1680 loss 0.0650 time 0.06s
+epoch 3 step 900/1680 loss 0.1934 time 0.07s
+epoch 3 step 920/1680 loss 0.1083 time 0.07s
+epoch 3 step 940/1680 loss 0.0496 time 0.06s
+epoch 3 step 960/1680 loss 0.1185 time 0.07s
+epoch 3 step 980/1680 loss 0.0514 time 0.07s
+epoch 3 step 1000/1680 loss 0.1345 time 0.08s
+[EVAL] step 1000 dev_loss 0.1970 token_acc 0.9457 micro_f1 0.7607 macro_f1 0.7582
+---- per-type (worst -> best) ----
+address      P=0.539 R=0.686 F1=0.604 (tp=256 fp=219 fn=117)
+scene        P=0.698 R=0.684 F1=0.691 (tp=143 fp=62 fn=66)
+government   P=0.722 R=0.789 F1=0.754 (tp=195 fp=75 fn=52)
+book         P=0.768 R=0.773 F1=0.770 (tp=119 fp=36 fn=35)
+position     P=0.770 R=0.774 F1=0.772 (tp=335 fp=100 fn=98)
+organization P=0.788 R=0.757 F1=0.772 (tp=278 fp=75 fn=89)
+movie        P=0.755 R=0.795 F1=0.774 (tp=120 fp=39 fn=31)
+company      P=0.758 R=0.804 F1=0.780 (tp=304 fp=97 fn=74)
+game         P=0.759 R=0.824 F1=0.790 (tp=243 fp=77 fn=52)
+name         P=0.860 R=0.888 F1=0.874 (tp=412 fp=67 fn=52)
+----------------------------------
+Writing model shards: 100%|█████████████████████████████████████████████████████| 1/1 [00:01<00:00,  1.13s/it]
+[SAVE] new best macro_f1=0.7582 saved to outputs/bert_run_bios/best
+[EPOCH END] epoch 3 dev_loss 0.1927 token_acc 0.9455 micro_f1 0.7581 macro_f1 0.7553
+epoch 4 step 1020/1680 loss 0.0608 time 0.08s
+epoch 4 step 1040/1680 loss 0.0238 time 0.07s
+epoch 4 step 1060/1680 loss 0.0524 time 0.07s
+epoch 4 step 1080/1680 loss 0.0836 time 0.07s
+epoch 4 step 1100/1680 loss 0.0453 time 0.07s
+epoch 4 step 1120/1680 loss 0.0240 time 0.08s
+epoch 4 step 1140/1680 loss 0.0655 time 0.07s
+epoch 4 step 1160/1680 loss 0.0202 time 0.07s
+epoch 4 step 1180/1680 loss 0.0826 time 0.07s
+epoch 4 step 1200/1680 loss 0.0467 time 0.07s
+[EVAL] step 1200 dev_loss 0.2242 token_acc 0.9426 micro_f1 0.7569 macro_f1 0.7525
+---- per-type (worst -> best) ----
+address      P=0.633 R=0.601 F1=0.616 (tp=224 fp=130 fn=149)
+scene        P=0.678 R=0.737 F1=0.706 (tp=154 fp=73 fn=55)
+company      P=0.748 R=0.738 F1=0.743 (tp=279 fp=94 fn=99)
+organization P=0.745 R=0.774 F1=0.759 (tp=284 fp=97 fn=83)
+book         P=0.738 R=0.786 F1=0.761 (tp=121 fp=43 fn=33)
+government   P=0.719 R=0.810 F1=0.762 (tp=200 fp=78 fn=47)
+movie        P=0.747 R=0.781 F1=0.764 (tp=118 fp=40 fn=33)
+position     P=0.753 R=0.781 F1=0.766 (tp=338 fp=111 fn=95)
+game         P=0.744 R=0.827 F1=0.783 (tp=244 fp=84 fn=51)
+name         P=0.836 R=0.892 F1=0.863 (tp=414 fp=81 fn=50)
+----------------------------------
+epoch 4 step 1220/1680 loss 0.0381 time 0.06s
+epoch 4 step 1240/1680 loss 0.0253 time 0.07s
+epoch 4 step 1260/1680 loss 0.0927 time 0.07s
+epoch 4 step 1280/1680 loss 0.0594 time 0.07s
+epoch 4 step 1300/1680 loss 0.0834 time 0.07s
+epoch 4 step 1320/1680 loss 0.0593 time 0.06s
+epoch 4 step 1340/1680 loss 0.0442 time 0.07s
+[EPOCH END] epoch 4 dev_loss 0.2173 token_acc 0.9438 micro_f1 0.7529 macro_f1 0.7494
+epoch 5 step 1360/1680 loss 0.0283 time 0.07s
+epoch 5 step 1380/1680 loss 0.0206 time 0.07s
+epoch 5 step 1400/1680 loss 0.0389 time 0.07s
+[EVAL] step 1400 dev_loss 0.2352 token_acc 0.9427 micro_f1 0.7508 macro_f1 0.7461
+---- per-type (worst -> best) ----
+address      P=0.559 R=0.622 F1=0.589 (tp=232 fp=183 fn=141)
+scene        P=0.687 R=0.694 F1=0.690 (tp=145 fp=66 fn=64)
+movie        P=0.705 R=0.775 F1=0.738 (tp=117 fp=49 fn=34)
+government   P=0.711 R=0.777 F1=0.743 (tp=192 fp=78 fn=55)
+company      P=0.735 R=0.778 F1=0.756 (tp=294 fp=106 fn=84)
+organization P=0.734 R=0.782 F1=0.757 (tp=287 fp=104 fn=80)
+book         P=0.741 R=0.779 F1=0.759 (tp=120 fp=42 fn=34)
+position     P=0.761 R=0.781 F1=0.771 (tp=338 fp=106 fn=95)
+game         P=0.762 R=0.837 F1=0.798 (tp=247 fp=77 fn=48)
+name         P=0.843 R=0.877 F1=0.860 (tp=407 fp=76 fn=57)
+----------------------------------
+epoch 5 step 1420/1680 loss 0.0275 time 0.08s
+epoch 5 step 1440/1680 loss 0.0393 time 0.07s
+epoch 5 step 1460/1680 loss 0.0215 time 0.08s
+epoch 5 step 1480/1680 loss 0.0505 time 0.07s
+epoch 5 step 1500/1680 loss 0.0200 time 0.06s
+epoch 5 step 1520/1680 loss 0.0130 time 0.06s
+epoch 5 step 1540/1680 loss 0.0256 time 0.07s
+epoch 5 step 1560/1680 loss 0.0828 time 0.07s
+epoch 5 step 1580/1680 loss 0.0091 time 0.07s
+epoch 5 step 1600/1680 loss 0.0178 time 0.08s
+[EVAL] step 1600 dev_loss 0.2468 token_acc 0.9433 micro_f1 0.7557 macro_f1 0.7526
+---- per-type (worst -> best) ----
+address      P=0.559 R=0.614 F1=0.585 (tp=229 fp=181 fn=144)
+scene        P=0.678 R=0.694 F1=0.686 (tp=145 fp=69 fn=64)
+book         P=0.726 R=0.773 F1=0.748 (tp=119 fp=45 fn=35)
+company      P=0.742 R=0.778 F1=0.760 (tp=294 fp=102 fn=84)
+organization P=0.772 R=0.766 F1=0.769 (tp=281 fp=83 fn=86)
+position     P=0.769 R=0.769 F1=0.769 (tp=333 fp=100 fn=100)
+movie        P=0.775 R=0.775 F1=0.775 (tp=117 fp=34 fn=34)
+government   P=0.743 R=0.810 F1=0.775 (tp=200 fp=69 fn=47)
+game         P=0.759 R=0.844 F1=0.799 (tp=249 fp=79 fn=46)
+name         P=0.846 R=0.875 F1=0.860 (tp=406 fp=74 fn=58)
+----------------------------------
+epoch 5 step 1620/1680 loss 0.0331 time 0.07s
+epoch 5 step 1640/1680 loss 0.0207 time 0.08s
+epoch 5 step 1660/1680 loss 0.0254 time 0.06s
+epoch 5 step 1680/1680 loss 0.0308 time 0.06s
+[EPOCH END] epoch 5 dev_loss 0.2462 token_acc 0.9432 micro_f1 0.7534 macro_f1 0.7506
+Writing model shards: 100%|█████████████████████████████████████████████████████| 1/1 [00:00<00:00,  1.59it/s]
+[DONE] final model saved to: outputs/bert_run_bios/final
+
