@@ -6,7 +6,6 @@ import os
 import torch
 from torch.utils.data import DataLoader
 from src.utils.seed import set_seed
-set_seed(cfg["model"].get("seed", 42))
 from seqeval.metrics import f1_score, classification_report
 
 

@@ -1,11 +1,18 @@
 import json
 import os
 import argparse
+import sys
+
+
 from pathlib import Path
 from typing import Dict, Any, List, Optional
 
 import torch
 from transformers import AutoTokenizer
+
+# ← 添加这两行
+ROOT = Path(__file__).resolve().parent.parent  # 指向 ner-crf/
+sys.path.insert(0, str(ROOT))
 
 from src.config.config_parser import load_config
 from src.data.label_map import build_label_map_from_config
@@ -20,8 +27,9 @@ def resolve_device(device_str: str) -> torch.device:
 
 
 def load_checkpoint_to_model(model: torch.nn.Module, ckpt_path: str, device: torch.device):
-    ckpt = torch.load(ckpt_path, map_location=device)
-    # our Trainer saves {"model_state_dict": ...}
+    # ✅ PyTorch 2.6+ 需要显式设置 weights_only=False
+    ckpt = torch.load(ckpt_path, map_location=device, weights_only=False)
+    
     state_dict = ckpt["model_state_dict"] if isinstance(ckpt, dict) and "model_state_dict" in ckpt else ckpt
     model.load_state_dict(state_dict, strict=True)
     return model

@@ -1,8 +1,8 @@
 {
-  "data_dir": "./ner-crf/data",
-  "train_path": "./ner-crf/data/train.json",
-  "dev_path": "./ner-crf/data/dev.json",
-  "test_path": "./ner-crf/data/test.json",
+  "data_dir": ".data",
+  "train_path": ".data/train.json",
+  "dev_path": ".data/dev.json",
+  "test_path": ".data/test.json",
   "output_dir": "./outputs",
 
   "model": {

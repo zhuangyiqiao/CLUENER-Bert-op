@@ -1,10 +1,17 @@
 import os
 import json
+import sys
+import torch
+import logging
 from pathlib import Path
 
-import torch
+# ← 添加这两行
+ROOT = Path(__file__).resolve().parent.parent  # 指向 ner-crf/
+sys.path.insert(0, str(ROOT))
+
+#from transformers import AdamW
+from torch.optim import AdamW  # ✅ 新写法
 from torch.utils.data import DataLoader
-from transformers import AdamW
 
 from src.config.config_parser import load_config
 from src.data.processor import CluenerProcessor
