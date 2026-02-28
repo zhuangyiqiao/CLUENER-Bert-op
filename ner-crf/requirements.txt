@@ -1,0 +1,6 @@
+#torch 云服务器一般已有
+transformers
+tokenizers
+seqeval
+numpy
+tqdm
