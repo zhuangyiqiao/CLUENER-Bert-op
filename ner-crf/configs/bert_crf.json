@@ -1,8 +1,8 @@
 {
-  "data_dir": ".data",
-  "train_path": ".data/train.json",
-  "dev_path": ".data/dev.json",
-  "test_path": ".data/test.json",
+  "data_dir": "data",
+  "train_path": "data/train.json",
+  "dev_path": "data/dev.json",
+  "test_path": "data/test.json",
   "output_dir": "./outputs",
 
   "model": {
@@ -20,7 +20,8 @@
     "num_epochs": 5,
     "train_batch_size": 32,
     "eval_batch_size": 32,
-    "learning_rate": 3e-5,
+    "learning_rate": 5e-5,
+    "learning_rate_head": 1e-3,
     "weight_decay": 0.01,
     "warmup_ratio": 0.1,
     "max_grad_norm": 1.0,

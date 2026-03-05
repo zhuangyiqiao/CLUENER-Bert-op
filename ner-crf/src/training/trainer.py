@@ -7,7 +7,10 @@ import torch
 from torch.utils.data import DataLoader
 from src.utils.seed import set_seed
 from seqeval.metrics import f1_score, classification_report
+import logging
 
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 @dataclass
 class TrainState:
@@ -132,7 +135,7 @@ class Trainer:
                 # 注意：seqeval 通常希望没有 START/STOP（我们这里也不会有）
                 all_pred.append(pred_labels)
                 all_true.append(true_labels)
-
+                
         dev_f1 = f1_score(all_true, all_pred)
         report = classification_report(all_true, all_pred, digits=4)
         return dev_f1, report

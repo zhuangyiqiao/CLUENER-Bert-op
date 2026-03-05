@@ -14,17 +14,11 @@ def load_config(config_path: str):
         config = json.load(f)
 
     # ==========================
-    # 1️⃣ 处理路径
+    # 1️⃣ 处理路径（保持字符串格式用于 JSON 序列化）
     # ==========================
-
-    config["data_dir"] = Path(config["data_dir"])
-    config["train_path"] = Path(config["train_path"])
-    config["dev_path"] = Path(config["dev_path"])
-    config["test_path"] = Path(config["test_path"])
-    config["output_dir"] = Path(config["output_dir"])
-
-    # 创建输出目录（如果不存在）
-    config["output_dir"].mkdir(parents=True, exist_ok=True)
+    
+    # 在需要时转换为 Path 对象，但不改变原配置（保持可序列化）
+    # 后续使用时自行转换：Path(config["data_dir"]) 等
 
     # ==========================
     # 2️⃣ 自动生成 id2label

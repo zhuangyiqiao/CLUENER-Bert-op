@@ -47,7 +47,7 @@ def main():
 
     # 3) paths
     data_dir = Path(cfg["data_dir"])
-    output_dir = cfg["output_dir"]
+    output_dir = Path(cfg["output_dir"])
     os.makedirs(output_dir, exist_ok=True)
 
 
@@ -119,10 +119,48 @@ def main():
     )
 
     # 9) optimizer
-    lr = float(cfg["train"]["learning_rate"])
+    #lr = float(cfg["train"]["learning_rate"])
+    #wd = float(cfg["train"]["weight_decay"])
+
+    #optimizer = AdamW(model.parameters(), lr=lr, weight_decay=wd)
+
+    # 9) optimizer (param groups: bert vs head/crf)
+    lr_bert = float(cfg["train"]["learning_rate"])
+    lr_head = float(cfg["train"].get("learning_rate_head", lr_bert))
     wd = float(cfg["train"]["weight_decay"])
 
-    optimizer = AdamW(model.parameters(), lr=lr, weight_decay=wd)
+    bert_params = []
+    head_params = []
+
+    for name, p in model.named_parameters():
+        if not p.requires_grad:
+            continue
+        # 关键：这里按你 BertCrfForNer 内部 BERT 的属性名匹配
+        # 常见是 "bert."，如果你的模型里是 self.encoder 或 self.backbone，就要改成对应前缀
+        if name.startswith("bert."):
+            bert_params.append(p)
+        else:
+            head_params.append(p)
+
+    optimizer = AdamW(
+        [
+            {"params": bert_params, "lr": lr_bert, "weight_decay": wd},
+            {"params": head_params, "lr": lr_head, "weight_decay": wd},
+        ]
+    )
+
+    print("num param groups:", len(optimizer.param_groups))
+    print("group lrs:", [g["lr"] for g in optimizer.param_groups])
+
+    print("=" * 60)
+    print("Optimizer Parameter Groups Debug:")
+    for i, group in enumerate(optimizer.param_groups):
+        print(f"Group {i}:")
+        print(f"  LR: {group['lr']:.2e}")
+        print(f"  Params count: {len(group['params'])}")
+        if len(group['params']) > 0:
+            print(f"  Sample param name: {[n for n, p in model.named_parameters() if p in group['params']][:3]}")
+    print("=" * 60)
 
     # 10) scheduler (needs total training steps)
     num_epochs = int(cfg["train"]["num_epochs"])
