@@ -158,9 +158,10 @@ def main():
         print(f"Group {i}:")
         print(f"  LR: {group['lr']:.2e}")
         print(f"  Params count: {len(group['params'])}")
-        if len(group['params']) > 0:
-            print(f"  Sample param name: {[n for n, p in model.named_parameters() if p in group['params']][:3]}")
-    print("=" * 60)
+
+        group_param_ids = {id(p) for p in group['params']}
+        sample_names = [n for n, p in model.named_parameters() if id(p) in group_param_ids][:3]
+        print(f"  Sample param name: {sample_names}")
 
     # 10) scheduler (needs total training steps)
     num_epochs = int(cfg["train"]["num_epochs"])
