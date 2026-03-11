@@ -16,7 +16,7 @@ logger = logging.getLogger(__name__)
 class TrainState:
     global_step: int = 0
     best_f1: float = 0.0
-
+    best_epoch: int = 0
 
 class Trainer:
     def __init__(
@@ -52,21 +52,38 @@ class Trainer:
 
         self.model.to(self.device)
 
-    def train(self, num_epochs: int) -> None:
+    def train(self, num_epochs: int) -> Dict[str, Any]:
+        last_train_loss = None
+        last_dev_f1 = None
+        last_dev_report = None
+
         for epoch in range(1, num_epochs + 1):
             train_loss = self.train_one_epoch(epoch)
             dev_f1, dev_report = self.evaluate()
+  
+            last_train_loss = train_loss
+            last_dev_f1 = dev_f1
+            last_dev_report = dev_report
 
             print(f"[Epoch {epoch}] train_loss={train_loss:.4f} dev_f1={dev_f1:.4f}")
 
-            # 保存 best
-            if dev_f1 > self.state.best_f1:
-                self.state.best_f1 = dev_f1
-                self.save_checkpoint("best.pt")
-                print(f"[BEST] new best_f1={dev_f1:.4f} saved to best.pt")
+        # 保存 best
+        if dev_f1 > self.state.best_f1:
+            self.state.best_f1 = dev_f1
+            self.state.best_epoch = epoch
+            self.save_checkpoint("best.pt")
+            print(f"[BEST] new best_f1={dev_f1:.4f} saved to best.pt")
 
-            # 你也可以选择每个 epoch 都保存
-            self.save_checkpoint(f"epoch_{epoch}.pt")
+        # 每个 epoch 都保存
+        self.save_checkpoint(f"epoch_{epoch}.pt")
+
+        return {
+            "best_f1": self.state.best_f1,
+            "best_epoch": self.state.best_epoch,
+            "last_train_loss": last_train_loss,
+            "last_dev_f1": last_dev_f1,
+            "last_dev_report": last_dev_report,
+    }
 
     def train_one_epoch(self, epoch: int) -> float:
         self.model.train()

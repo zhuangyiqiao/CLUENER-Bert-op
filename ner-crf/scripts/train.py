@@ -3,6 +3,7 @@ import json
 import sys
 import torch
 import logging
+import copy#新增
 from pathlib import Path
 
 # ← 添加这两行
@@ -46,18 +47,23 @@ def main():
     set_seed(seed,deterministic=True)
 
     # 3) paths
+    #xiugai
     data_dir = Path(cfg["data_dir"])
-    output_dir = Path(cfg["output_dir"])
+
+    base_output_dir = Path(cfg["output_dir"])
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")#现在改成带时间戳的子目录后，每次实验都是独立档案。
+    exp_name = cfg["train"].get("exp_name", f"bert_crf_{timestamp}")
+    output_dir = base_output_dir / exp_name
     os.makedirs(output_dir, exist_ok=True)
 
+    device = resolve_device(cfg["train"].get("device", "auto")) 
 
     log_path = Path(output_dir) / "train.log"
     logger = init_logger(log_file=log_path, log_file_level=logging.INFO)
-    logger.info(f"Using device: {cfg['train'].get('device', 'auto')}")
+    logger.info(f"Using resolved device: {device}")
     logger.info(f"Output dir: {output_dir}")
     logger.info(f"Pretrained: {cfg['model']['pretrained_name']}")
-    logger.info(f"Seed: {seed}")
-    
+    logger.info(f"Seed: {seed}")  
 
     # 4) build label map
     label_map = build_label_map_from_config(cfg)
@@ -176,7 +182,7 @@ def main():
     )
 
     # 11) device
-    device = resolve_device(cfg["train"].get("device", "auto"))
+    #已解析 重复步骤：device = resolve_device(cfg["train"].get("device", "auto"))
 
     # 12) trainer
     trainer = Trainer(
@@ -194,14 +200,59 @@ def main():
     )
 
     # 13) train
-    trainer.train(num_epochs=num_epochs)
+    #trainer.train(num_epochs=num_epochs)
+    train_summary = trainer.train(num_epochs=num_epochs)
+        # save metrics summary
+    metrics = {
+        "exp_name": exp_name,
+        "output_dir": str(output_dir),
+        "best_f1": train_summary.get("best_f1"),
+        "best_epoch": train_summary.get("best_epoch"),
+        "last_train_loss": train_summary.get("last_train_loss"),
+        "last_dev_f1": train_summary.get("last_dev_f1"),
+        "num_epochs": num_epochs,
+        "pretrained_model": pretrained_name,
+        "train_batch_size": train_bs,
+        "eval_batch_size": eval_bs,
+        "learning_rate_bert": lr_bert,
+        "learning_rate_head": lr_head,
+        "weight_decay": wd,
+        "max_length": max_length,
+        "device": str(device),
+        "seed": seed,
+    }
+
+    with open(output_dir / "metrics.json", "w", encoding="utf-8") as f:
+        json.dump(metrics, f, ensure_ascii=False, indent=2)
 
     # 14) (optional) save config for reproducibility
-    with open(Path(output_dir) / "config_used.json", "w", encoding="utf-8") as f:
-        json.dump(cfg, f, ensure_ascii=False, indent=2)
+    #with open(Path(output_dir) / "config_used.json", "w", encoding="utf-8") as f:
+    #    json.dump(cfg, f, ensure_ascii=False, indent=2)
 
-    print("[DONE] training finished.")
-    logger.info("[DONE]Training finished.")
+    # 14) save config for reproducibility  make_json_serializable() 是递归处理，能把整个 cfg 里所有不适合 JSON 的 Path、torch.device 都转掉。
+    cfg_to_save = copy.deepcopy(cfg)
+
+    def make_json_serializable(obj):
+        if isinstance(obj, dict):
+            return {k: make_json_serializable(v) for k, v in obj.items()}
+        elif isinstance(obj, list):
+            return [make_json_serializable(v) for v in obj]
+        elif isinstance(obj, tuple):
+            return [make_json_serializable(v) for v in obj]
+        elif isinstance(obj, Path):
+            return str(obj)
+        elif isinstance(obj, torch.device):
+            return str(obj)
+        else:
+            return obj
+
+    cfg_to_save = make_json_serializable(cfg_to_save)
+
+    with open(Path(output_dir) / "config_used.json", "w", encoding="utf-8") as f:
+        json.dump(cfg_to_save, f, ensure_ascii=False, indent=2)
+
+    print(f"[DONE] training finished. best_f1={train_summary['best_f1']:.4f}, best_epoch={train_summary['best_epoch']}")
+    logger.info(f"[DONE] Training finished. best_f1={train_summary['best_f1']:.4f}, best_epoch={train_summary['best_epoch']}")
 
 if __name__ == "__main__":
     main()
