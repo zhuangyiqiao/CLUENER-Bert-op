@@ -1,0 +1,25 @@
+# training outputs
+outputs/
+ner-crf/outputs/
+
+# model checkpoints
+*.pt
+*.pth
+*.bin
+*.ckpt
+*.safetensors
+
+# logs
+logs/
+runs/
+
+# python cache
+__pycache__/
+*.pyc
+
+# dataset cache
+cache/
+
+# environment
+venv/
+.env
