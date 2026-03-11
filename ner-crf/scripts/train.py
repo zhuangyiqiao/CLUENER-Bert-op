@@ -3,67 +3,84 @@ import json
 import sys
 import torch
 import logging
-import copy#新增
+import copy
+from datetime import datetime
 from pathlib import Path
 
-# ← 添加这两行
+from torch.optim import AdamW
+from torch.utils.data import DataLoader
+
 ROOT = Path(__file__).resolve().parent.parent  # 指向 ner-crf/
 sys.path.insert(0, str(ROOT))
-
-#from transformers import AdamW
-from torch.optim import AdamW  # ✅ 新写法
-from torch.utils.data import DataLoader
 
 from src.config.config_parser import load_config
 from src.data.processor import CluenerProcessor
 from src.data.label_map import build_label_map_from_config
 from src.data.dataset import CluenerBertDataset
 from src.data.collate import DataCollatorForBertCrf
-
-
 from src.models.model import BertCrfForNer
 from src.training.lr_scheduler import build_scheduler
 from src.training.trainer import Trainer
-
 from src.utils.logger import init_logger
 from src.utils.seed import set_seed
+
 
 def resolve_device(device_str: str) -> torch.device:
     if device_str == "auto":
         return torch.device("cuda" if torch.cuda.is_available() else "cpu")
     return torch.device(device_str)
+
+
 def resolve_path(root: Path, p: str) -> Path:
     pp = Path(p)
     return pp if pp.is_absolute() else (root / pp).resolve()
 
+
+def make_json_serializable(obj):
+    if isinstance(obj, dict):
+        return {k: make_json_serializable(v) for k, v in obj.items()}
+    elif isinstance(obj, list):
+        return [make_json_serializable(v) for v in obj]
+    elif isinstance(obj, tuple):
+        return [make_json_serializable(v) for v in obj]
+    elif isinstance(obj, Path):
+        return str(obj)
+    elif isinstance(obj, torch.device):
+        return str(obj)
+    else:
+        return obj
 
 
 def main():
     # 1) load config
     cfg = load_config("configs/bert_crf.json")
 
-    # 2) set seed (minimal)
+    # 2) set seed
     seed = cfg["model"].get("seed", 42)
-    set_seed(seed,deterministic=True)
+    set_seed(seed, deterministic=True)
 
     # 3) paths
-    #xiugai
     data_dir = Path(cfg["data_dir"])
 
     base_output_dir = Path(cfg["output_dir"])
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")#现在改成带时间戳的子目录后，每次实验都是独立档案。
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     exp_name = cfg["train"].get("exp_name", f"bert_crf_{timestamp}")
+
+    # 如果配置里 exp_name 是固定值，也建议自动拼上时间戳，避免覆盖
+    if exp_name == "bert_crf" or exp_name == "baseline":
+        exp_name = f"{exp_name}_{timestamp}"
+
     output_dir = base_output_dir / exp_name
     os.makedirs(output_dir, exist_ok=True)
 
-    device = resolve_device(cfg["train"].get("device", "auto")) 
+    device = resolve_device(cfg["train"].get("device", "auto"))
 
-    log_path = Path(output_dir) / "train.log"
+    log_path = output_dir / "train.log"
     logger = init_logger(log_file=log_path, log_file_level=logging.INFO)
     logger.info(f"Using resolved device: {device}")
     logger.info(f"Output dir: {output_dir}")
     logger.info(f"Pretrained: {cfg['model']['pretrained_name']}")
-    logger.info(f"Seed: {seed}")  
+    logger.info(f"Seed: {seed}")
 
     # 4) build label map
     label_map = build_label_map_from_config(cfg)
@@ -71,7 +88,7 @@ def main():
     start_id = label_map.START_ID
     stop_id = label_map.STOP_ID
 
-    # 5) load data (JSONL)
+    # 5) load data
     processor = CluenerProcessor(data_dir)
     train_examples = processor.get_train_examples()
     dev_examples = processor.get_dev_examples()
@@ -84,34 +101,37 @@ def main():
         examples=train_examples,
         pretrained_name=pretrained_name,
         label_map=label_map,
-        max_length=max_length
+        max_length=max_length,
     )
     dev_ds = CluenerBertDataset(
         examples=dev_examples,
         pretrained_name=pretrained_name,
         label_map=label_map,
-        max_length=max_length
+        max_length=max_length,
     )
 
     # 7) dataloaders
     train_bs = cfg["train"]["train_batch_size"]
     eval_bs = cfg["train"]["eval_batch_size"]
 
-    collator = DataCollatorForBertCrf(pretrained_name=pretrained_name, label_map=label_map)
+    collator = DataCollatorForBertCrf(
+        pretrained_name=pretrained_name,
+        label_map=label_map,
+    )
 
     train_loader = DataLoader(
         train_ds,
         batch_size=train_bs,
         shuffle=True,
         collate_fn=collator,
-        num_workers=0
+        num_workers=0,
     )
     dev_loader = DataLoader(
         dev_ds,
         batch_size=eval_bs,
         shuffle=False,
         collate_fn=collator,
-        num_workers=0
+        num_workers=0,
     )
 
     # 8) model
@@ -125,12 +145,6 @@ def main():
     )
 
     # 9) optimizer
-    #lr = float(cfg["train"]["learning_rate"])
-    #wd = float(cfg["train"]["weight_decay"])
-
-    #optimizer = AdamW(model.parameters(), lr=lr, weight_decay=wd)
-
-    # 9) optimizer (param groups: bert vs head/crf)
     lr_bert = float(cfg["train"]["learning_rate"])
     lr_head = float(cfg["train"].get("learning_rate_head", lr_bert))
     wd = float(cfg["train"]["weight_decay"])
@@ -141,8 +155,6 @@ def main():
     for name, p in model.named_parameters():
         if not p.requires_grad:
             continue
-        # 关键：这里按你 BertCrfForNer 内部 BERT 的属性名匹配
-        # 常见是 "bert."，如果你的模型里是 self.encoder 或 self.backbone，就要改成对应前缀
         if name.startswith("bert."):
             bert_params.append(p)
         else:
@@ -165,11 +177,11 @@ def main():
         print(f"  LR: {group['lr']:.2e}")
         print(f"  Params count: {len(group['params'])}")
 
-        group_param_ids = {id(p) for p in group['params']}
+        group_param_ids = {id(p) for p in group["params"]}
         sample_names = [n for n, p in model.named_parameters() if id(p) in group_param_ids][:3]
         print(f"  Sample param name: {sample_names}")
 
-    # 10) scheduler (needs total training steps)
+    # 10) scheduler
     num_epochs = int(cfg["train"]["num_epochs"])
     grad_acc_steps = int(cfg["train"].get("gradient_accumulation_steps", 1))
 
@@ -178,13 +190,10 @@ def main():
     scheduler = build_scheduler(
         optimizer=optimizer,
         num_training_steps=total_update_steps,
-        warmup_ratio=warmup_ratio
+        warmup_ratio=warmup_ratio,
     )
 
-    # 11) device
-    #已解析 重复步骤：device = resolve_device(cfg["train"].get("device", "auto"))
-
-    # 12) trainer
+    # 11) trainer
     trainer = Trainer(
         model=model,
         optimizer=optimizer,
@@ -193,18 +202,19 @@ def main():
         train_loader=train_loader,
         dev_loader=dev_loader,
         device=device,
-        output_dir=output_dir,
+        output_dir=str(output_dir),
         log_every_steps=int(cfg["train"].get("log_every_steps", 50)),
         max_grad_norm=float(cfg["train"].get("max_grad_norm", 1.0)),
         gradient_accumulation_steps=grad_acc_steps,
     )
 
-    # 13) train
-    #trainer.train(num_epochs=num_epochs)
+    # 12) train
     train_summary = trainer.train(num_epochs=num_epochs)
-        # save metrics summary
+
+    # 13) save metrics summary
     metrics = {
         "exp_name": exp_name,
+        "timestamp": timestamp,
         "output_dir": str(output_dir),
         "best_f1": train_summary.get("best_f1"),
         "best_epoch": train_summary.get("best_epoch"),
@@ -225,35 +235,37 @@ def main():
     with open(output_dir / "metrics.json", "w", encoding="utf-8") as f:
         json.dump(metrics, f, ensure_ascii=False, indent=2)
 
-    # 14) (optional) save config for reproducibility
-    #with open(Path(output_dir) / "config_used.json", "w", encoding="utf-8") as f:
-    #    json.dump(cfg, f, ensure_ascii=False, indent=2)
-
-    # 14) save config for reproducibility  make_json_serializable() 是递归处理，能把整个 cfg 里所有不适合 JSON 的 Path、torch.device 都转掉。
+    # 14) save config for reproducibility
     cfg_to_save = copy.deepcopy(cfg)
-
-    def make_json_serializable(obj):
-        if isinstance(obj, dict):
-            return {k: make_json_serializable(v) for k, v in obj.items()}
-        elif isinstance(obj, list):
-            return [make_json_serializable(v) for v in obj]
-        elif isinstance(obj, tuple):
-            return [make_json_serializable(v) for v in obj]
-        elif isinstance(obj, Path):
-            return str(obj)
-        elif isinstance(obj, torch.device):
-            return str(obj)
-        else:
-            return obj
-
     cfg_to_save = make_json_serializable(cfg_to_save)
 
-    with open(Path(output_dir) / "config_used.json", "w", encoding="utf-8") as f:
+    with open(output_dir / "config_used.json", "w", encoding="utf-8") as f:
         json.dump(cfg_to_save, f, ensure_ascii=False, indent=2)
+
+    # 15) save human-readable summary
+    with open(output_dir / "summary.md", "w", encoding="utf-8") as f:
+        f.write("# Experiment Summary\n\n")
+        f.write(f"- exp_name: {exp_name}\n")
+        f.write(f"- timestamp: {timestamp}\n")
+        f.write(f"- output_dir: {output_dir}\n")
+        f.write(f"- best_f1: {train_summary.get('best_f1'):.4f}\n")
+        f.write(f"- best_epoch: {train_summary.get('best_epoch')}\n")
+        f.write(f"- last_train_loss: {train_summary.get('last_train_loss'):.4f}\n")
+        f.write(f"- last_dev_f1: {train_summary.get('last_dev_f1'):.4f}\n")
+        f.write(f"- num_epochs: {num_epochs}\n")
+        f.write(f"- pretrained_model: {pretrained_name}\n")
+        f.write(f"- train_batch_size: {train_bs}\n")
+        f.write(f"- eval_batch_size: {eval_bs}\n")
+        f.write(f"- learning_rate_bert: {lr_bert}\n")
+        f.write(f"- learning_rate_head: {lr_head}\n")
+        f.write(f"- weight_decay: {wd}\n")
+        f.write(f"- max_length: {max_length}\n")
+        f.write(f"- device: {device}\n")
+        f.write(f"- seed: {seed}\n")
 
     print(f"[DONE] training finished. best_f1={train_summary['best_f1']:.4f}, best_epoch={train_summary['best_epoch']}")
     logger.info(f"[DONE] Training finished. best_f1={train_summary['best_f1']:.4f}, best_epoch={train_summary['best_epoch']}")
 
+
 if __name__ == "__main__":
     main()
-

@@ -1,0 +1,4 @@
+03/11/2026 15:00:01 - INFO - root - Using resolved device: cuda
+03/11/2026 15:00:01 - INFO - root - Output dir: outputs/bert_crf_20260311_150001
+03/11/2026 15:00:01 - INFO - root - Pretrained: hfl/chinese-bert-wwm-ext
+03/11/2026 15:00:01 - INFO - root - Seed: 42
