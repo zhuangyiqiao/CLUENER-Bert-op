@@ -66,13 +66,15 @@ class BertCrfForNer(nn.Module):
         sequence_output = self.dropout(sequence_output)
         emissions = self.classifier(sequence_output)  # (B, T, num_tags)
 
+        mask = valid_mask.bool()
+
         if label_ids is not None:
-            # CRF NLL
-            loss = self.crf(emissions=emissions, tags=label_ids, mask=valid_mask)
+            # CRF NLL  改为bool类型，loss计算需要
+            loss = self.crf(emissions=emissions, tags=label_ids, mask=mask)
             return loss
         else:
             # Viterbi decode
-            pred_paths = self.crf.decode(emissions=emissions, mask=valid_mask)
+            pred_paths = self.crf.decode(emissions=emissions, mask=mask)
             return pred_paths
 
     @torch.no_grad()

@@ -4,6 +4,7 @@ import sys
 import torch
 import logging
 import copy
+import math #梯度计算需要导入库
 from datetime import datetime
 from pathlib import Path
 
@@ -181,11 +182,25 @@ def main():
         sample_names = [n for n, p in model.named_parameters() if id(p) in group_param_ids][:3]
         print(f"  Sample param name: {sample_names}")
 
-    # 10) scheduler
+    # 10) scheduler-old
+    #num_epochs = int(cfg["train"]["num_epochs"])
+    #grad_acc_steps = int(cfg["train"].get("gradient_accumulation_steps", 1))
+
+    #total_update_steps = (len(train_loader) * num_epochs) // max(1, grad_acc_steps)
+    #warmup_ratio = float(cfg["train"].get("warmup_ratio", 0.1))
+    #scheduler = build_scheduler(
+    #    optimizer=optimizer,
+    #    num_training_steps=total_update_steps,
+    #    warmup_ratio=warmup_ratio,
+    #)
+
+    # 10) scheduler-new
     num_epochs = int(cfg["train"]["num_epochs"])
     grad_acc_steps = int(cfg["train"].get("gradient_accumulation_steps", 1))
 
-    total_update_steps = (len(train_loader) * num_epochs) // max(1, grad_acc_steps)
+    steps_per_epoch = math.ceil(len(train_loader) / max(1, grad_acc_steps))
+    total_update_steps = steps_per_epoch * num_epochs
+
     warmup_ratio = float(cfg["train"].get("warmup_ratio", 0.1))
     scheduler = build_scheduler(
         optimizer=optimizer,

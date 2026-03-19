@@ -1,0 +1,19 @@
+# Experiment Summary
+
+- exp_name: bert_crf_20260319_100513
+- timestamp: 20260319_100513
+- output_dir: outputs/bert_crf_20260319_100513
+- best_f1: 0.7941
+- best_epoch: 4
+- last_train_loss: 1.2315
+- last_dev_f1: 0.7889
+- num_epochs: 7
+- pretrained_model: hfl/chinese-bert-wwm-ext
+- train_batch_size: 32
+- eval_batch_size: 32
+- learning_rate_bert: 2e-05
+- learning_rate_head: 0.001
+- weight_decay: 0.01
+- max_length: 256
+- device: cuda
+- seed: 42

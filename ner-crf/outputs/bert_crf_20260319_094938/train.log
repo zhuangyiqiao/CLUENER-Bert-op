@@ -1,0 +1,46 @@
+03/19/2026 09:49:38 - INFO - root - Using resolved device: cuda
+03/19/2026 09:49:38 - INFO - root - Output dir: outputs/bert_crf_20260319_094938
+03/19/2026 09:49:38 - INFO - root - Pretrained: hfl/chinese-bert-wwm-ext
+03/19/2026 09:49:38 - INFO - root - Seed: 42
+03/19/2026 09:49:44 - INFO - src.training.trainer - [Train] epoch=1 global_step=50 loss=42.5993
+03/19/2026 09:49:48 - INFO - src.training.trainer - [Train] epoch=1 global_step=100 loss=15.3062
+03/19/2026 09:49:52 - INFO - src.training.trainer - [Train] epoch=1 global_step=150 loss=12.3846
+03/19/2026 09:49:56 - INFO - src.training.trainer - [Train] epoch=1 global_step=200 loss=9.7093
+03/19/2026 09:50:01 - INFO - src.training.trainer - [Train] epoch=1 global_step=250 loss=10.1236
+03/19/2026 09:50:05 - INFO - src.training.trainer - [Train] epoch=1 global_step=300 loss=6.3061
+03/19/2026 09:50:11 - INFO - src.training.trainer - [Epoch 1] train_loss=23.2947 dev_f1=0.7511
+03/19/2026 09:50:12 - INFO - src.training.trainer - [BEST] new best_f1=0.7511 saved to best.pt
+03/19/2026 09:50:14 - INFO - src.training.trainer - [Train] epoch=2 global_step=350 loss=9.6758
+03/19/2026 09:50:18 - INFO - src.training.trainer - [Train] epoch=2 global_step=400 loss=6.1311
+03/19/2026 09:50:22 - INFO - src.training.trainer - [Train] epoch=2 global_step=450 loss=4.5904
+03/19/2026 09:50:26 - INFO - src.training.trainer - [Train] epoch=2 global_step=500 loss=4.2442
+03/19/2026 09:50:31 - INFO - src.training.trainer - [Train] epoch=2 global_step=550 loss=6.1439
+03/19/2026 09:50:35 - INFO - src.training.trainer - [Train] epoch=2 global_step=600 loss=4.0109
+03/19/2026 09:50:39 - INFO - src.training.trainer - [Train] epoch=2 global_step=650 loss=5.0029
+03/19/2026 09:50:44 - INFO - src.training.trainer - [Epoch 2] train_loss=5.8210 dev_f1=0.7938
+03/19/2026 09:50:46 - INFO - src.training.trainer - [BEST] new best_f1=0.7938 saved to best.pt
+03/19/2026 09:50:51 - INFO - src.training.trainer - [Train] epoch=3 global_step=700 loss=4.3952
+03/19/2026 09:50:56 - INFO - src.training.trainer - [Train] epoch=3 global_step=750 loss=3.7423
+03/19/2026 09:51:00 - INFO - src.training.trainer - [Train] epoch=3 global_step=800 loss=4.3282
+03/19/2026 09:51:04 - INFO - src.training.trainer - [Train] epoch=3 global_step=850 loss=6.2300
+03/19/2026 09:51:08 - INFO - src.training.trainer - [Train] epoch=3 global_step=900 loss=4.8813
+03/19/2026 09:51:13 - INFO - src.training.trainer - [Train] epoch=3 global_step=950 loss=5.8060
+03/19/2026 09:51:17 - INFO - src.training.trainer - [Train] epoch=3 global_step=1000 loss=2.3029
+03/19/2026 09:51:20 - INFO - src.training.trainer - [Epoch 3] train_loss=3.9943 dev_f1=0.7995
+03/19/2026 09:51:21 - INFO - src.training.trainer - [BEST] new best_f1=0.7995 saved to best.pt
+03/19/2026 09:51:27 - INFO - src.training.trainer - [Train] epoch=4 global_step=1050 loss=3.4235
+03/19/2026 09:51:31 - INFO - src.training.trainer - [Train] epoch=4 global_step=1100 loss=1.8387
+03/19/2026 09:51:35 - INFO - src.training.trainer - [Train] epoch=4 global_step=1150 loss=4.4659
+03/19/2026 09:51:39 - INFO - src.training.trainer - [Train] epoch=4 global_step=1200 loss=2.5561
+03/19/2026 09:51:44 - INFO - src.training.trainer - [Train] epoch=4 global_step=1250 loss=2.9672
+03/19/2026 09:51:48 - INFO - src.training.trainer - [Train] epoch=4 global_step=1300 loss=3.2701
+03/19/2026 09:51:54 - INFO - src.training.trainer - [Epoch 4] train_loss=2.8409 dev_f1=0.7939
+03/19/2026 09:51:57 - INFO - src.training.trainer - [Train] epoch=5 global_step=1350 loss=1.6574
+03/19/2026 09:52:01 - INFO - src.training.trainer - [Train] epoch=5 global_step=1400 loss=1.4507
+03/19/2026 09:52:05 - INFO - src.training.trainer - [Train] epoch=5 global_step=1450 loss=1.2506
+03/19/2026 09:52:09 - INFO - src.training.trainer - [Train] epoch=5 global_step=1500 loss=3.7174
+03/19/2026 09:52:13 - INFO - src.training.trainer - [Train] epoch=5 global_step=1550 loss=2.2341
+03/19/2026 09:52:17 - INFO - src.training.trainer - [Train] epoch=5 global_step=1600 loss=2.1097
+03/19/2026 09:52:21 - INFO - src.training.trainer - [Train] epoch=5 global_step=1650 loss=3.2967
+03/19/2026 09:52:27 - INFO - src.training.trainer - [Epoch 5] train_loss=2.1955 dev_f1=0.7936
+03/19/2026 09:52:29 - INFO - root - [DONE] Training finished. best_f1=0.7995, best_epoch=3

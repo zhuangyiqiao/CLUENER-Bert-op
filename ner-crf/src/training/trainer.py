@@ -114,32 +114,28 @@ class Trainer:
         for step, batch in enumerate(self.train_loader, start=1):
             batch = self._move_batch_to_device(batch)
 
-            loss = self.model(
+            raw_loss = self.model(
                 input_ids=batch["input_ids"],
                 attention_mask=batch["attention_mask"],
                 valid_mask=batch["valid_mask"],
                 label_ids=batch["label_ids"],
             )
 
-            # 梯度累积
-            loss = loss / self.gradient_accumulation_steps
+            loss = raw_loss / self.gradient_accumulation_steps
             loss.backward()
 
-            if step % self.gradient_accumulation_steps == 0:
+            if step % self.gradient_accumulation_steps == 0 or step == len(self.train_loader):
                 torch.nn.utils.clip_grad_norm_(self.model.parameters(), self.max_grad_norm)
-
                 self.optimizer.step()
                 if self.scheduler is not None:
                     self.scheduler.step()
                 self.optimizer.zero_grad(set_to_none=True)
-
                 self.state.global_step += 1
 
                 if self.log_every_steps > 0 and self.state.global_step % self.log_every_steps == 0:
-                    print(f"[Train] epoch={epoch} global_step={self.state.global_step} loss={loss.item():.4f}")
-                    logger.info(f"[Train] epoch={epoch} global_step={self.state.global_step} loss={loss.item():.4f}")
+                    logger.info(f"[Train] epoch={epoch} global_step={self.state.global_step} loss={raw_loss.item():.4f}")
 
-            total_loss += loss.item()
+            total_loss += raw_loss.item()
             num_steps += 1
 
         return total_loss / max(1, num_steps)

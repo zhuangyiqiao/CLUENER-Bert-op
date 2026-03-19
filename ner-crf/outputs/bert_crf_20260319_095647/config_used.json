@@ -4,7 +4,6 @@
   "dev_path": "data/dev.json",
   "test_path": "data/test.json",
   "output_dir": "./outputs",
-
   "model": {
     "pretrained_name": "hfl/chinese-bert-wwm-ext",
     "dropout": 0.2,
@@ -17,11 +16,11 @@
   },
   "train": {
     "device": "auto",
-    "num_epochs": 5,
+    "num_epochs": 3,
     "train_batch_size": 32,
     "eval_batch_size": 32,
-    "learning_rate": 1e-5,
-    "learning_rate_head": 1e-3,
+    "learning_rate": 2e-05,
+    "learning_rate_head": 0.001,
     "weight_decay": 0.01,
     "warmup_ratio": 0.1,
     "max_grad_norm": 1.0,
@@ -30,7 +29,6 @@
     "log_every_steps": 50,
     "eval_every_steps": 0
   },
-
   "labels": {
     "label2id": {
       "O": 0,
@@ -66,6 +64,43 @@
       "S-scene": 30,
       "<START>": 31,
       "<STOP>": 32
+    },
+    "id2label": {
+      "0": "O",
+      "1": "B-address",
+      "2": "B-book",
+      "3": "B-company",
+      "4": "B-game",
+      "5": "B-government",
+      "6": "B-movie",
+      "7": "B-name",
+      "8": "B-organization",
+      "9": "B-position",
+      "10": "B-scene",
+      "11": "I-address",
+      "12": "I-book",
+      "13": "I-company",
+      "14": "I-game",
+      "15": "I-government",
+      "16": "I-movie",
+      "17": "I-name",
+      "18": "I-organization",
+      "19": "I-position",
+      "20": "I-scene",
+      "21": "S-address",
+      "22": "S-book",
+      "23": "S-company",
+      "24": "S-game",
+      "25": "S-government",
+      "26": "S-movie",
+      "27": "S-name",
+      "28": "S-organization",
+      "29": "S-position",
+      "30": "S-scene",
+      "31": "<START>",
+      "32": "<STOP>"
     }
-  }
+  },
+  "num_labels": 33,
+  "device": "cuda"
 }

@@ -46,7 +46,7 @@ def extract_gold_sequences(label_ids: torch.Tensor, valid_mask: torch.Tensor):
 
 
 def main():
-    exp_dir = Path("outputs/bert_crf_20260311_170658")   # 改成你的实验目录
+    exp_dir = Path("outputs/bert_crf_20260319_111305")   # 改成你的实验目录
     config_path = exp_dir / "config_used.json"
     ckpt_path = exp_dir / "best.pt"
     out_path = exp_dir / "dev_predictions.jsonl"

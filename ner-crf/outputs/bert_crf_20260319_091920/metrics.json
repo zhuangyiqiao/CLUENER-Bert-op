@@ -1,0 +1,19 @@
+{
+  "exp_name": "bert_crf_20260319_091920",
+  "timestamp": "20260319_091920",
+  "output_dir": "outputs/bert_crf_20260319_091920",
+  "best_f1": 0.773515836383893,
+  "best_epoch": 7,
+  "last_train_loss": 0.5884721017486992,
+  "last_dev_f1": 0.7734771573604061,
+  "num_epochs": 8,
+  "pretrained_model": "hfl/chinese-bert-wwm-ext",
+  "train_batch_size": 32,
+  "eval_batch_size": 32,
+  "learning_rate_bert": 5e-05,
+  "learning_rate_head": 0.0005,
+  "weight_decay": 0.01,
+  "max_length": 256,
+  "device": "cuda",
+  "seed": 42
+}
