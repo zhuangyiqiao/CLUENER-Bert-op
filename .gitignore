@@ -1,8 +1,5 @@
-# training outputs
-outputs/
-ner-crf/outputs/
-
 # model checkpoints
+
 *.pt
 *.pth
 *.bin
@@ -23,3 +20,7 @@ cache/
 # environment
 venv/
 .env
+
+# optional: large experiment artifacts
+*.npy
+*.npz
